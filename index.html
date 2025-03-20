@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Quote Generator</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+
+  <body class="text-white min-h-screen flex flex-col items-center justify-center">
+    <header class="mb-6 text-center">
+      <h1 class="text-3xl font-bold bg-red-400 p-3 rounded-lg">Random Quote Generator</h1>
+    </header>
+
+    <main class="bg-neutral-100 p-8 rounded-lg shadow-md text-black w-full max-w-2xl text-center space-y-6">
+      <!-- Quote Container -->
+      <div id="quote-container">
+        <p id="quote" class="text-2xl font-semibold">"The best way to predict the future is to create it."</p>
+        <p id="author" class="text-lg italic p-2">Abraham Lincoln</p>
+      </div>
+      <!-- Buttons -->
+      <div class="flex flex-wrap md:flex-nowrap justify-center gap-4 mt-8">
+        <button id="new_quote" class="py-2 px-4 rounded-lg bg-blue-500 hover:bg-blue-700 text-white font-bold transition">
+          New Quote
+        </button>
+        <button id="copy_to_clipboard" class="py-2 px-4 rounded-lg bg-green-400 hover:bg-green-700 text-white font-bold transition">
+          Copy to Clipboard
+        </button>
+        <button id="download_image" class="py-2 px-4 rounded-lg bg-orange-400 hover:bg-orange-700 text-white font-bold transition">
+          Download Image
+        </button>
+        <button id="share_to_twitter" class="py-2 px-4 rounded-lg bg-blue-400 hover:bg-blue-500 text-white font-bold transition">
+          Share to Twitter
+        </button>
+      </div>
+    </main>
+
+    <!-- Toast for copy to clipboard -->
+    <div
+      id="toast"
+      class="toast hidden fixed bottom-6 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-500 text-white p-4 rounded"
+    >
+      Copied to clipboard!
+    </div>
+
+    <script type="module" src="script.js"></script>
+  </body>
+</html>

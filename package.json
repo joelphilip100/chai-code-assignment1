@@ -1,0 +1,18 @@
+{
+  "name": "quote-image-app",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "deploy": "vite build && git subtree push --prefix dist origin gh-pages"
+  },
+  "devDependencies": {
+    "vite": "^6.2.0"
+  },
+  "dependencies": {
+    "html2canvas": "^1.4.1"
+  }
+}
