@@ -1,13 +1,11 @@
 const html2canvas = window.html2canvas;
 
-console.log(import.meta.env);
-const RANDOM_QUOTE_ENDPOINT = import.meta.env.VITE_RANDOM_QUOTE_ENDPOINT;
-console.log("Random quote endpoint:" + RANDOM_QUOTE_ENDPOINT);
-const PEXELS_API_KEY = import.meta.env.VITE_PEXELS_API_KEY;
-const PEXELS_ENDPOINT = import.meta.env.VITE_PEXELS_ENDPOINT;
+// const RANDOM_QUOTE_ENDPOINT = import.meta.env.VITE_RANDOM_QUOTE_ENDPOINT;
+// const PEXELS_API_KEY = import.meta.env.VITE_PEXELS_API_KEY;
+// const PEXELS_ENDPOINT = import.meta.env.VITE_PEXELS_ENDPOINT;
 
 async function getQuote() {
-  const url = RANDOM_QUOTE_ENDPOINT;
+  const url = "https://api.freeapi.app/api/v1/public/quotes/quote/random";
   const options = { method: "GET", headers: { accept: "application/json" } };
   try {
     const response = await fetch(url, options);
@@ -17,22 +15,22 @@ async function getQuote() {
   }
 }
 
-async function getImageBasedOnQuoteTag(quoteTag) {
-  const url = `${PEXELS_ENDPOINT}?query=${quoteTag}&per_page=1`;
-  const options = {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-      Authorization: `${PEXELS_API_KEY}`,
-    },
-  };
-  try {
-    const response = await fetch(url, options);
-    return response.json();
-  } catch (err) {
-    console.log(err);
-  }
-}
+// async function getImageBasedOnQuoteTag(quoteTag) {
+//   const url = `${PEXELS_ENDPOINT}?query=${quoteTag}&per_page=1`;
+//   const options = {
+//     method: "GET",
+//     headers: {
+//       accept: "application/json",
+//       Authorization: `${PEXELS_API_KEY}`,
+//     },
+//   };
+//   try {
+//     const response = await fetch(url, options);
+//     return response.json();
+//   } catch (err) {
+//     console.log(err);
+//   }
+// }
 
 async function newQuote() {
   const quoteElement = document.getElementById("quote");
@@ -44,14 +42,22 @@ async function newQuote() {
   const quote = quoteApiResponse.data.content;
   const tags = quoteApiResponse.data.tags;
 
+  /* TODO - Will implement the below feature where we are getting the image from API in future, it's working in local, but having some trouble accessing .env values after deployment, 
+            so currently using an api that does not require api key to set background image
   // get a random tag based on quote api response
-  const selectRandomTagBasedOnImage = tags[Math.floor(Math.random() * tags.length)];
+  // const selectRandomTagBasedOnImage = tags[Math.floor(Math.random() * tags.length)];
 
   // get image based on quote tag
-  const imageData = await getImageBasedOnQuoteTag(selectRandomTagBasedOnImage);
-  const photoUrl = imageData.photos[0].src.landscape;
+  // const imageData = await getImageBasedOnQuoteTag(selectRandomTagBasedOnImage);
+  // const photoUrl = imageData.photos[0].src.landscape; */
 
-  document.body.style.backgroundImage = `url('${photoUrl}')`;
+  const randomId = Math.floor(Math.random() * 1000);
+  const imageUrl = `https://picsum.photos/800/600?random=${randomId}`;
+
+  document.body.style.backgroundImage = `url('${imageUrl}')`;
+  document.body.style.backgroundSize = "cover";
+  document.body.style.backgroundPosition = "center";
+  document.body.style.backgroundRepeat = "no-repeat";
 
   quoteElement.textContent = quote;
   authorElement.textContent = author;
