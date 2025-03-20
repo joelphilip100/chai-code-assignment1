@@ -1,8 +1,9 @@
 const html2canvas = window.html2canvas;
 
+const RANDOM_QUOTE_ENDPOINT = import.meta.env.VITE_RANDOM_QUOTE_ENDPOINT;
+console.log("Random quote endpoint:" + RANDOM_QUOTE_ENDPOINT);
 const PEXELS_API_KEY = import.meta.env.VITE_PEXELS_API_KEY;
 const PEXELS_ENDPOINT = import.meta.env.VITE_PEXELS_ENDPOINT;
-const RANDOM_QUOTE_ENDPOINT = import.meta.env.VITE_RANDOM_QUOTE_ENDPOINT;
 
 async function getQuote() {
   const url = RANDOM_QUOTE_ENDPOINT;
