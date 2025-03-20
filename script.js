@@ -1,5 +1,6 @@
 const html2canvas = window.html2canvas;
 
+console.log(import.meta.env);
 const RANDOM_QUOTE_ENDPOINT = import.meta.env.VITE_RANDOM_QUOTE_ENDPOINT;
 console.log("Random quote endpoint:" + RANDOM_QUOTE_ENDPOINT);
 const PEXELS_API_KEY = import.meta.env.VITE_PEXELS_API_KEY;
