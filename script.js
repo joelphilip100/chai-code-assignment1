@@ -1,4 +1,4 @@
-import html2canvas from "html2canvas";
+import html2canvas from "html2canvas/dist/html2canvas.min.js";
 
 const PEXELS_API_KEY = import.meta.env.VITE_PEXELS_API_KEY;
 const PEXELS_ENDPOINT = import.meta.env.VITE_PEXELS_ENDPOINT;
